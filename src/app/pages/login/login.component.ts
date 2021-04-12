@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../rest/auth.service';
 import {User} from '../../rest/rest.service';
+import {SupportRestService} from "../../rest/support.service";
 
 declare var $:any;
 
@@ -25,8 +26,9 @@ export class LoginComponent implements OnInit{
     public firstUserIsCreating:boolean;
     public showYouCanLogin:boolean;
     public showFailedToCreateUserAccount:boolean;
+    public communityEditionCheckbox:boolean;
 
-    constructor(private element : ElementRef, private auth: AuthService, private router: Router) {
+    constructor(private element : ElementRef, private supportRestService:SupportRestService, private auth: AuthService, private router: Router) {
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
         this.showYouCanLogin = false;
@@ -121,6 +123,7 @@ export class LoginComponent implements OnInit{
                 this.firstLogin = false;
                 this.showYouCanLogin = true;
 
+                this.auth.isCommunityCheckboxEnabled = this.communityEditionCheckbox;
             }
             else {
                 this.showFailedToCreateUserAccount = true;

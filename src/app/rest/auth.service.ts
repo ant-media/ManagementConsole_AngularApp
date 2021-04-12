@@ -22,6 +22,7 @@ export class AuthService implements CanActivate {
      * because it's not updated yet.
      */
     public isAuthenticated: boolean = true;
+    public isCommunityCheckboxEnabled: boolean = false;
 
     public serverSettings: ServerSettings;
 

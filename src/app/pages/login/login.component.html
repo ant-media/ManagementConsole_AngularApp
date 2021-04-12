@@ -92,7 +92,7 @@
                                              </div>
                                            
                                             <div class="form-group">
-                                                <label i18n="@@loginFormEmail">Username<span class="star">*</span></label>
+                                                <label i18n="@@loginFormEmail">Email Address<span class="star">*</span></label>
                                                 <input  type="email" name="firstEmail" class="form-control input-no-border" 
                                                     [(ngModel)]="firstUser.email" required #firstAccountEmail="ngModel" minlength="5">
                                                     <small i18n="@@fistAccountEmailRequired" [hidden]="firstAccountEmail.valid || (firstAccountEmail.pristine && !registerForm.submitted)" class="text-danger">
@@ -116,6 +116,19 @@
                                                         Password mismatch
                                                         </small>
                                                 </div>
+                                            <div class="form-group">
+                                                <div class="checkbox">
+                                                    <input id="communityEditionCheckbox"
+                                                           name="communityEditionCheckbox"
+                                                           [(ngModel)]="communityEditionCheckbox"
+                                                           type="checkbox">
+                                                    <label for="communityEditionCheckbox">
+                                                        Enable this checkbox and get a chance to win an Enterprise Edition.
+                                                    </label>
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                         <div class="card-footer text-center">
                                             <button type="submit" [disabled]='firstUserIsCreating' 
