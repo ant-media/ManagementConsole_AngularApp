@@ -1083,12 +1083,13 @@ export class AppPageComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
 
-    deleteLiveBroadcast(streamId: string,broadcastHostAddress: string): void {
+    deleteLiveBroadcast(streamId: string, broadcastHostAddress: string, type:string, broadcastStatus: string): void {
         let REMOTE_HOST_ADDRESS;
         let hostAddress = localStorage.getItem('hostAddress');
 
         // I didn't added broadcast status check. Because, some of stream sources status is finished but it's trying to connect sources.
-        if(this.isClusterMode && hostAddress != broadcastHostAddress) {
+        //But we need to add broadcast status check for live stream type.
+        if((this.isClusterMode && hostAddress != broadcastHostAddress) && (type != "liveStream" && broadcastStatus == "broadcasting")) {
             REMOTE_HOST_ADDRESS = "http://" + broadcastHostAddress + ":5080";
 
             if(this.appSettings.jwtControlEnabled != true && this.appSettings.jwtSecretKey != null){
